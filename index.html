@@ -24,93 +24,111 @@
     --bad:#ff7680; --bad-bg:#2e0f12; --bad-text:#ff7680;
     --info:#6ea1ff; --info-bg:#1d2c48; --info-text:#a8c8ff;
   }
-  * { box-sizing:border-box; margin:0; padding:0; }
-  html,body { background:var(--bg); color:var(--text); font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif; line-height:1.5; min-height:100vh; }
-  .wrap { max-width:720px; margin:0 auto; padding:32px 20px 60px; }
-  .topbar { display:flex; justify-content:space-between; align-items:center; margin-bottom:32px; }
-  .logo { font-size:13px; letter-spacing:0.1em; color:var(--muted); text-transform:uppercase; }
-  button { font:inherit; border:none; cursor:pointer; border-radius:var(--radius-sm); padding:10px 18px; font-size:14px; font-weight:600; transition:opacity 0.15s; }
-  button:disabled { opacity:0.38; cursor:not-allowed; }
-  .btn-primary { background:var(--accent); color:#fff; }
-  .btn-secondary { background:var(--surface2); color:var(--text); border:1px solid var(--border); }
-  .btn-ghost { background:transparent; color:var(--accent); border:1px solid var(--border); }
-  select, input { font:inherit; width:100%; padding:10px 12px; border-radius:var(--radius-sm); border:1px solid var(--border); background:var(--surface); color:var(--text); font-size:14px; }
-  .card { background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:20px 24px; margin-bottom:12px; }
-  .label-sm { font-size:11px; letter-spacing:0.1em; color:var(--muted); text-transform:uppercase; margin-bottom:6px; }
-  h1 { font-size:28px; font-weight:700; line-height:1.2; margin-bottom:10px; }
-  h2 { font-size:20px; font-weight:700; margin-bottom:16px; }
-  p { color:var(--muted); font-size:14px; line-height:1.6; }
-  .grid-3 { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-bottom:28px; }
-  .stat-card { background:var(--surface2); border-radius:var(--radius-sm); padding:14px; border:1px solid var(--border); }
-  .stat-card .st { font-size:12px; color:var(--muted); margin-bottom:4px; }
-  .stat-card .sv { font-size:13px; font-weight:600; color:var(--text); line-height:1.35; }
-  .chip-row { display:flex; gap:8px; flex-wrap:wrap; }
-  .chip { padding:9px 16px; border-radius:999px; border:1px solid var(--border); background:var(--surface2); color:var(--text); font-size:13px; cursor:pointer; transition:all 0.15s; }
-  .chip.sel { background:var(--accent-bg); color:var(--accent-text); border-color:var(--accent); font-weight:600; }
-  .opt-btn { width:100%; text-align:left; padding:13px 16px; border-radius:var(--radius-sm); border:1px solid var(--border); background:var(--surface2); color:var(--text); font-size:14px; font-weight:400; margin-bottom:8px; cursor:pointer; transition:all 0.15s; line-height:1.45; }
-  .opt-btn.sel { background:var(--accent-bg); color:var(--accent-text); border-color:var(--accent); font-weight:600; }
-  .sf-card { border-radius:var(--radius); padding:16px 20px; margin-bottom:10px; border:1px solid var(--border); background:var(--surface); transition:all 0.15s; }
-  .sf-card.danger { background:var(--bad-bg); border-color:var(--bad); }
-  .sf-text { font-size:14px; margin-bottom:10px; line-height:1.5; }
-  .sf-text.danger { color:var(--bad-text); }
-  .yesno { display:flex; gap:8px; }
-  .yesno button { font-size:13px; padding:7px 16px; }
-  .btn-no.sel { background:var(--good-bg); color:var(--good-text); border:1px solid var(--good); }
-  .btn-yes.sel { background:var(--bad-bg); color:var(--bad-text); border:1px solid var(--bad); }
-  .btn-no, .btn-yes { background:var(--surface2); color:var(--muted); border:1px solid var(--border); }
-  .progress-wrap { margin-bottom:20px; }
-  .progress-meta { display:flex; justify-content:space-between; font-size:12px; color:var(--muted); margin-bottom:6px; }
-  .progress-bar { height:4px; background:var(--surface2); border-radius:2px; }
-  .progress-fill { height:100%; background:var(--accent); border-radius:2px; transition:width 0.25s; }
-  .actions { display:flex; gap:10px; align-items:center; margin-top:24px; }
-  .verdict-card { border-radius:var(--radius); padding:24px; margin-bottom:20px; }
-  .verdict-card.v-good { background:var(--good-bg); border:1px solid var(--good); }
-  .verdict-card.v-warn { background:var(--warn-bg); border:1px solid var(--warn); }
-  .verdict-card.v-bad { background:var(--bad-bg); border:1px solid var(--bad); }
-  .verdict-word { font-size:36px; font-weight:800; margin-bottom:6px; }
-  .verdict-card.v-good .verdict-word { color:var(--good-text); }
-  .verdict-card.v-warn .verdict-word { color:var(--warn-text); }
-  .verdict-card.v-bad .verdict-word { color:var(--bad-text); }
-  .verdict-headline { font-size:15px; font-style:italic; margin-bottom:12px; }
-  .verdict-card.v-good .verdict-headline { color:var(--good-text); }
-  .verdict-card.v-warn .verdict-headline { color:var(--warn-text); }
-  .verdict-card.v-bad .verdict-headline { color:var(--bad-text); }
-  .blocker-note { font-size:13px; padding:8px 12px; border-radius:8px; margin-bottom:10px; background:rgba(0,0,0,0.07); }
-  .verdict-card.v-good .blocker-note { color:var(--good-text); }
-  .verdict-card.v-warn .blocker-note { color:var(--warn-text); }
-  .verdict-card.v-bad .blocker-note { color:var(--bad-text); }
-  .verdict-summary { font-size:14px; line-height:1.7; }
-  .verdict-card.v-good .verdict-summary { color:var(--good-text); }
-  .verdict-card.v-warn .verdict-summary { color:var(--warn-text); }
-  .verdict-card.v-bad .verdict-summary { color:var(--bad-text); }
-  .zone-card { background:var(--surface); border:1px solid var(--border); border-radius:var(--radius-sm); padding:14px 18px; margin-bottom:8px; }
-  .zone-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; }
-  .zone-name { font-size:14px; font-weight:600; }
-  .zone-score { font-size:13px; font-weight:700; }
-  .score-good { color:var(--good); }
-  .score-mid { color:var(--warn); }
-  .score-bad { color:var(--bad); }
-  .bar-bg { height:4px; background:var(--surface2); border-radius:2px; margin-bottom:8px; }
-  .bar-fill { height:100%; border-radius:2px; }
-  .bar-good { background:var(--good); }
-  .bar-mid { background:var(--warn); }
-  .bar-bad { background:var(--bad); }
-  .zone-text { font-size:13px; color:var(--muted); line-height:1.55; }
-  .two-col { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin:16px 0; }
-  .info-card { background:var(--surface2); border:1px solid var(--border); border-radius:var(--radius-sm); padding:16px; }
-  .risk-item { font-size:13px; line-height:1.5; padding:0 0 6px 12px; border-left:2px solid var(--bad); color:var(--text); margin-bottom:4px; }
-  .insight-card { background:var(--info-bg); border:1px solid var(--accent); border-radius:var(--radius-sm); padding:14px 18px; margin-bottom:20px; }
-  .insight-label { font-size:11px; letter-spacing:0.1em; color:var(--info-text); text-transform:uppercase; margin-bottom:6px; opacity:0.7; }
-  .insight-text { font-size:14px; color:var(--info-text); line-height:1.55; }
-  .warn-banner { background:var(--bad-bg); border:1px solid var(--bad); border-radius:var(--radius-sm); padding:10px 16px; margin-top:8px; font-size:13px; color:var(--bad-text); }
-  .loading { text-align:center; padding:80px 20px; }
-  .loading .dots { display:inline-flex; gap:6px; margin-top:16px; }
-  .loading .dot { width:8px; height:8px; border-radius:50%; background:var(--accent); animation:pulse 1.2s ease-in-out infinite; }
-  .loading .dot:nth-child(2) { animation-delay:0.2s; }
-  .loading .dot:nth-child(3) { animation-delay:0.4s; }
-  @keyframes pulse { 0%,100%{opacity:0.25;transform:scale(0.8)} 50%{opacity:1;transform:scale(1)} }
-  .err { font-size:13px; color:var(--bad-text); }
-  @media(max-width:600px) { .grid-3,.two-col{grid-template-columns:1fr;} .wrap{padding:20px 14px 40px;} }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html,body{background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;line-height:1.5;min-height:100vh;}
+  .wrap{max-width:760px;margin:0 auto;padding:32px 20px 60px;}
+  .topbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:32px;}
+  .logo{font-size:13px;letter-spacing:0.1em;color:var(--muted);text-transform:uppercase;}
+  button{font:inherit;border:none;cursor:pointer;border-radius:var(--radius-sm);padding:10px 18px;font-size:14px;font-weight:600;transition:opacity 0.15s;}
+  button:disabled{opacity:0.38;cursor:not-allowed;}
+  .btn-primary{background:var(--accent);color:#fff;}
+  .btn-secondary{background:var(--surface2);color:var(--text);border:1px solid var(--border);}
+  .btn-ghost{background:transparent;color:var(--accent);border:1px solid var(--border);}
+  select,input{font:inherit;width:100%;padding:10px 12px;border-radius:var(--radius-sm);border:1px solid var(--border);background:var(--surface);color:var(--text);font-size:14px;}
+  .label-sm{font-size:11px;letter-spacing:0.1em;color:var(--muted);text-transform:uppercase;margin-bottom:6px;}
+  h1{font-size:28px;font-weight:700;line-height:1.2;margin-bottom:10px;}
+  h2{font-size:20px;font-weight:700;margin-bottom:16px;}
+  p{color:var(--muted);font-size:14px;line-height:1.6;}
+  .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+  .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:28px;}
+  .stat-card{background:var(--surface2);border-radius:var(--radius-sm);padding:14px;border:1px solid var(--border);}
+  .stat-card .st{font-size:12px;color:var(--muted);margin-bottom:4px;}
+  .stat-card .sv{font-size:13px;font-weight:600;color:var(--text);line-height:1.35;}
+  .chip-row{display:flex;gap:8px;flex-wrap:wrap;}
+  .chip{padding:9px 16px;border-radius:999px;border:1px solid var(--border);background:var(--surface2);color:var(--text);font-size:13px;cursor:pointer;}
+  .chip.sel{background:var(--accent-bg);color:var(--accent-text);border-color:var(--accent);font-weight:600;}
+  .mode-card{background:var(--surface);border:2px solid var(--border);border-radius:var(--radius);padding:20px 24px;cursor:pointer;transition:all 0.15s;}
+  .mode-card:hover{border-color:var(--accent);}
+  .mode-card.sel{border-color:var(--accent);background:var(--accent-bg);}
+  .mode-card h3{font-size:16px;font-weight:700;margin-bottom:6px;}
+  .mode-card p{margin:0;}
+  .mode-card.sel h3{color:var(--accent-text);}
+  .opt-btn{width:100%;text-align:left;padding:13px 16px;border-radius:var(--radius-sm);border:1px solid var(--border);background:var(--surface2);color:var(--text);font-size:14px;font-weight:400;margin-bottom:8px;cursor:pointer;line-height:1.45;}
+  .opt-btn.sel{background:var(--accent-bg);color:var(--accent-text);border-color:var(--accent);font-weight:600;}
+  .sf-card{border-radius:var(--radius);padding:16px 20px;margin-bottom:10px;border:1px solid var(--border);background:var(--surface);}
+  .sf-card.danger{background:var(--bad-bg);border-color:var(--bad);}
+  .sf-text{font-size:14px;margin-bottom:10px;line-height:1.5;}
+  .sf-text.danger{color:var(--bad-text);}
+  .yesno{display:flex;gap:8px;}
+  .yesno button{font-size:13px;padding:7px 16px;}
+  .btn-no.sel{background:var(--good-bg);color:var(--good-text);border:1px solid var(--good);}
+  .btn-yes.sel{background:var(--bad-bg);color:var(--bad-text);border:1px solid var(--bad);}
+  .btn-no,.btn-yes{background:var(--surface2);color:var(--muted);border:1px solid var(--border);}
+  .progress-wrap{margin-bottom:20px;}
+  .progress-meta{display:flex;justify-content:space-between;font-size:12px;color:var(--muted);margin-bottom:6px;}
+  .progress-bar{height:4px;background:var(--surface2);border-radius:2px;}
+  .progress-fill{height:100%;background:var(--accent);border-radius:2px;transition:width 0.25s;}
+  .actions{display:flex;gap:10px;align-items:center;margin-top:24px;flex-wrap:wrap;}
+  .candidate-badge{display:inline-flex;align-items:center;gap:8px;background:var(--accent-bg);color:var(--accent-text);border-radius:999px;padding:6px 14px;font-size:13px;font-weight:700;margin-bottom:16px;}
+  .verdict-card{border-radius:var(--radius);padding:24px;margin-bottom:20px;}
+  .verdict-card.v-good{background:var(--good-bg);border:1px solid var(--good);}
+  .verdict-card.v-warn{background:var(--warn-bg);border:1px solid var(--warn);}
+  .verdict-card.v-bad{background:var(--bad-bg);border:1px solid var(--bad);}
+  .verdict-word{font-size:36px;font-weight:800;margin-bottom:6px;}
+  .verdict-card.v-good .verdict-word,.verdict-card.v-good .verdict-headline,.verdict-card.v-good .blocker-note,.verdict-card.v-good .verdict-summary{color:var(--good-text);}
+  .verdict-card.v-warn .verdict-word,.verdict-card.v-warn .verdict-headline,.verdict-card.v-warn .blocker-note,.verdict-card.v-warn .verdict-summary{color:var(--warn-text);}
+  .verdict-card.v-bad .verdict-word,.verdict-card.v-bad .verdict-headline,.verdict-card.v-bad .blocker-note,.verdict-card.v-bad .verdict-summary{color:var(--bad-text);}
+  .verdict-headline{font-size:15px;font-style:italic;margin-bottom:12px;}
+  .blocker-note{font-size:13px;padding:8px 12px;border-radius:8px;margin-bottom:10px;background:rgba(0,0,0,0.07);}
+  .verdict-summary{font-size:14px;line-height:1.7;}
+  .zone-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);padding:14px 18px;margin-bottom:8px;}
+  .zone-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;}
+  .zone-name{font-size:14px;font-weight:600;}
+  .zone-score{font-size:13px;font-weight:700;}
+  .score-good{color:var(--good);}.score-mid{color:var(--warn);}.score-bad{color:var(--bad);}
+  .bar-bg{height:4px;background:var(--surface2);border-radius:2px;margin-bottom:8px;}
+  .bar-fill{height:100%;border-radius:2px;}
+  .bar-good{background:var(--good);}.bar-mid{background:var(--warn);}.bar-bad{background:var(--bad);}
+  .zone-text{font-size:13px;color:var(--muted);line-height:1.55;}
+  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:16px 0;}
+  .info-card{background:var(--surface2);border:1px solid var(--border);border-radius:var(--radius-sm);padding:16px;}
+  .risk-item{font-size:13px;line-height:1.5;padding:0 0 6px 12px;border-left:2px solid var(--bad);color:var(--text);margin-bottom:4px;}
+  .insight-card{background:var(--info-bg);border:1px solid var(--accent);border-radius:var(--radius-sm);padding:14px 18px;margin-bottom:20px;}
+  .insight-label{font-size:11px;letter-spacing:0.1em;color:var(--info-text);text-transform:uppercase;margin-bottom:6px;opacity:0.7;}
+  .insight-text{font-size:14px;color:var(--info-text);line-height:1.55;}
+  .warn-banner{background:var(--bad-bg);border:1px solid var(--bad);border-radius:var(--radius-sm);padding:10px 16px;margin-top:8px;font-size:13px;color:var(--bad-text);}
+  .loading{text-align:center;padding:80px 20px;}
+  .loading .dots{display:inline-flex;gap:6px;margin-top:16px;}
+  .loading .dot{width:8px;height:8px;border-radius:50%;background:var(--accent);animation:pulse 1.2s ease-in-out infinite;}
+  .loading .dot:nth-child(2){animation-delay:0.2s;}
+  .loading .dot:nth-child(3){animation-delay:0.4s;}
+  @keyframes pulse{0%,100%{opacity:0.25;transform:scale(0.8)}50%{opacity:1;transform:scale(1)}}
+  .err{font-size:13px;color:var(--bad-text);}
+  /* Сравнение */
+  .cmp-winner{background:var(--good-bg);border:2px solid var(--good);border-radius:var(--radius);padding:24px;margin-bottom:24px;}
+  .cmp-winner-label{font-size:11px;letter-spacing:0.1em;color:var(--good-text);text-transform:uppercase;margin-bottom:4px;opacity:0.7;}
+  .cmp-winner-name{font-size:32px;font-weight:800;color:var(--good-text);margin-bottom:8px;}
+  .cmp-winner-why{font-size:14px;color:var(--good-text);line-height:1.7;}
+  .cmp-table{width:100%;border-collapse:collapse;margin-bottom:20px;}
+  .cmp-table th{text-align:left;font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:0.08em;padding:8px 12px;border-bottom:2px solid var(--border);}
+  .cmp-table td{padding:10px 12px;border-bottom:1px solid var(--border);font-size:14px;vertical-align:top;}
+  .cmp-table tr:last-child td{border-bottom:none;}
+  .cmp-table .zone-col{font-weight:600;font-size:13px;color:var(--muted);white-space:nowrap;}
+  .cmp-score{font-weight:700;font-size:15px;}
+  .cmp-win{color:var(--good);}.cmp-lose{color:var(--bad);}.cmp-tie{color:var(--warn);}
+  .cmp-bar-wrap{display:flex;align-items:center;gap:8px;}
+  .cmp-bar-bg{flex:1;height:6px;background:var(--surface2);border-radius:3px;}
+  .cmp-bar-fill{height:100%;border-radius:3px;}
+  .risk-cmp{font-size:13px;line-height:1.5;padding:6px 0 6px 12px;border-left:2px solid var(--border);color:var(--muted);margin-bottom:4px;}
+  .cmp-cards{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px;}
+  .cmp-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:18px;}
+  .cmp-card-name{font-size:13px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:4px;}
+  .cmp-card-verdict{font-size:20px;font-weight:800;margin-bottom:4px;}
+  .cmp-card-headline{font-size:13px;font-style:italic;color:var(--muted);}
+  .cmp-card.winner{border-color:var(--good);background:var(--good-bg);}
+  .cmp-card.winner .cmp-card-name,.cmp-card.winner .cmp-card-verdict,.cmp-card.winner .cmp-card-headline{color:var(--good-text);}
+  .hidden-insight-cmp{background:var(--info-bg);border:1px solid var(--accent);border-radius:var(--radius-sm);padding:14px 18px;margin-bottom:16px;}
+  @media(max-width:600px){.grid-3,.two-col,.cmp-cards,.grid-2{grid-template-columns:1fr;}.wrap{padding:20px 14px 40px;}.cmp-table th:nth-child(3),.cmp-table td:nth-child(3){display:none;}}
 </style>
 </head>
 <body data-theme="light">
@@ -123,19 +141,11 @@
 </div>
 
 <script>
-function toggleTheme(){
-  document.body.dataset.theme = document.body.dataset.theme==='dark'?'light':'dark';
-}
+function toggleTheme(){document.body.dataset.theme=document.body.dataset.theme==='dark'?'light':'dark';}
 
 const ROLES=["Руководитель транспортного отдела","Менеджер отдела закупок","Логист","Финансовый директор","Коммерческий директор","Руководитель склада","IT-директор","Другое"];
 const SITUATIONS=["Рост / масштабирование","Стабильная работа","Кризис / сокращение","Реструктуризация"];
-const STOP_FACTORS=[
-  "Скрывал от вас информацию, которая изменила бы ваше решение",
-  "Действовал в личных интересах в ущерб компании",
-  "Брал финансовые обязательства без вашего согласования",
-  "Открыто подрывал ваш авторитет перед командой или партнёрами",
-  "Вы ловили его на систематическом искажении фактов"
-];
+const STOP_FACTORS=["Скрывал от вас информацию, которая изменила бы ваше решение","Действовал в личных интересах в ущерб компании","Брал финансовые обязательства без вашего согласования","Открыто подрывал ваш авторитет перед командой или партнёрами","Вы ловили его на систематическом искажении фактов"];
 const QUESTIONS=[
   {zone:"Результат",text:"За последние полгода функция, за которую он отвечает...",opts:["Работает лучше, чем год назад","Примерно на том же уровне","Работает хуже, чем год назад"]},
   {zone:"Результат",text:"Когда ставлю задачу с дедлайном...",opts:["Выполняет в срок без напоминаний","Выполняет, но нужно напоминать","Часто срывает или теряет задачи"]},
@@ -154,52 +164,64 @@ const QUESTIONS=[
   {zone:"Потолок роста",text:"Если представить его на позицию выше...",opts:["Он первый, кого рассматриваю","Рассмотрел бы среди других","Не рассматриваю"]}
 ];
 
-const SYS=`Ты — жёсткий партнёр консалтинговой компании. 20 лет работаешь с собственниками российского среднего бизнеса. Видел сотни управленцев — знаешь как они устроены изнутри.
+const SYS_SINGLE=`Ты — жёсткий партнёр консалтинговой компании. 20 лет работаешь с собственниками российского среднего бизнеса. Видел сотни управленцев — знаешь как они устроены изнутри.
 
-Собственник описал тебе сотрудника через поведенческие наблюдения. Твоя задача — сказать ему правду. Не отчёт, не резюме ответов — а живой профессиональный диагноз. Как опытный врач который посмотрел на симптомы и говорит: "Вот что происходит на самом деле, вот почему, вот что делать."
+Собственник описал тебе сотрудника через поведенческие наблюдения. Твоя задача — сказать ему правду. Не отчёт, не резюме ответов — а живой профессиональный диагноз. Как опытный врач который посмотрел на симптомы и говорит: вот что происходит на самом деле, вот почему, вот что делать.
 
-ЗАПРЕЩЕНО:
-- Пересказывать ответы на вопросы ("требуется напоминание о дедлайнах" — это не анализ)
-- Использовать канцелярит ("демонстрирует", "функционирует", "осуществляет")
-- Писать очевидное ("надёжность низкая" если стоп-фактор сработал)
-- Абстрактные риски ("потеря доверия") — только конкретные сценарии
-
-ОБЯЗАТЕЛЬНО:
-- summary: скажи собственнику то что он чувствует но не может сформулировать. Назови тип этого человека. Объясни механику — почему он так ведёт себя и что это значит для бизнеса
-- zones assessment: не описание — интерпретация. Что за этим стоит? Какова реальная причина? Что это означает для собственника лично?
-- key_risks: три конкретных сценария с деталями. "В момент кризиса вы узнаете о проблеме от клиента или из документов — не от него. К тому времени цена вопроса вырастет в разы."
-- recommended_action: конкретное действие. Не "поговорить" — а что именно спросить, что проверить, что сделать и за сколько дней
-- hidden_insight: самое ценное. Парадокс или слепое пятно — то что собственник не видит потому что привык. Например: "Вы удерживаете его потому что он создаёт ощущение стабильности — но именно эта стабильность маскирует реальную деградацию функции"
+ЗАПРЕЩЕНО: пересказывать ответы, использовать канцелярит (демонстрирует, функционирует), абстрактные риски (потеря доверия).
+ОБЯЗАТЕЛЬНО: назвать тип этого человека, объяснить механику поведения, дать конкретные сценарии рисков с деталями, конкретное действие с временным горизонтом, парадокс или слепое пятно в hidden_insight.
 
 Верни ТОЛЬКО валидный JSON без markdown:
-{"verdict":"ПОВЫШАТЬ или УДЕРЖИВАТЬ или ВЫВОДИТЬ","verdict_blocked":true или false,"blocker_reason":"конкретная угроза для бизнеса от этого человека — не абстракция","headline":"суть этого человека как управленца — живая фраза не канцелярит","summary":"3-4 предложения. Живо, прямо, как говорят за закрытой дверью. Назови тип, объясни механику, скажи главное","zones":[{"name":"Результат","score":число,"assessment":"интерпретация — что реально происходит и почему"},{"name":"Самостоятельность","score":число,"assessment":"что это означает для собственника на практике каждый день"},{"name":"Управление","score":число,"assessment":"реальное состояние — не формальное описание"},{"name":"Надёжность","score":число,"assessment":"можно ли на него опереться когда по-настоящему важно"},{"name":"Потолок роста","score":число,"assessment":"есть ли реальная динамика или человек уже законсервировался"}],"key_risks":["конкретный сценарий с деталями 1","конкретный сценарий с деталями 2","конкретный сценарий с деталями 3"],"recommended_action":"конкретное действие — что именно сделать, что спросить, за сколько дней","hidden_insight":"парадокс или слепое пятно которое собственник не осознаёт — самое ценное наблюдение"}
-Правила вердикта: ПОВЫШАТЬ — Результат и Надёжность выше 70, нет стоп-факторов, есть потолок роста. ВЫВОДИТЬ — Результат ниже 40 ИЛИ Надёжность ниже 35 ИЛИ стоп-фактор. УДЕРЖИВАТЬ — всё остальное. Стоп-фактор → verdict_blocked=true → verdict не может быть ПОВЫШАТЬ.`;
+{"verdict":"ПОВЫШАТЬ или УДЕРЖИВАТЬ или ВЫВОДИТЬ","verdict_blocked":true или false,"blocker_reason":"конкретная угроза для бизнеса или null","headline":"суть человека как управленца — живая фраза","summary":"3-4 предложения. Живо, прямо. Назови тип, объясни механику, скажи главное","zones":[{"name":"Результат","score":число,"assessment":"интерпретация что реально происходит"},{"name":"Самостоятельность","score":число,"assessment":"что это означает для собственника на практике"},{"name":"Управление","score":число,"assessment":"реальное состояние функции"},{"name":"Надёжность","score":число,"assessment":"можно ли опереться в критический момент"},{"name":"Потолок роста","score":число,"assessment":"динамика или плато"}],"key_risks":["конкретный сценарий 1","конкретный сценарий 2","конкретный сценарий 3"],"recommended_action":"конкретное действие с временным горизонтом","hidden_insight":"парадокс или слепое пятно"}
+Правила: ПОВЫШАТЬ — Результат и Надёжность >70, нет стоп-факторов, есть потолок. ВЫВОДИТЬ — Результат <40 ИЛИ Надёжность <35 ИЛИ стоп-фактор. УДЕРЖИВАТЬ — всё остальное.`;
 
-let state = {
-  step:0, apiKey: localStorage.getItem('hr_audit_key')||'', role:'', customRole:'', tenure:'', situation:'',
-  sf: Array(5).fill(null),
-  ans: Array(15).fill(null),
-  qIdx:0, result:null, err:null
+const SYS_COMPARE=`Ты — жёсткий партнёр консалтинговой компании. 20 лет работаешь с собственниками российского среднего бизнеса.
+
+Собственник оценивает двух кандидатов на одну должность. Ты получишь данные по каждому. Твоя задача — не просто сравнить баллы, а ответить на один вопрос: КОГО НАЗНАЧИТЬ и ПОЧЕМУ именно он закроет эту роль лучше.
+
+ЗАПРЕЩЕНО: быть дипломатичным, говорить "оба хороши", давать уклончивые ответы.
+ОБЯЗАТЕЛЬНО: назвать победителя чётко, объяснить в чём он принципиально сильнее для данной роли и контекста, указать риски победителя которые нужно учесть, честно сказать про слабости проигравшего.
+
+Верни ТОЛЬКО валидный JSON без markdown:
+{"winner":"имя победителя (Кандидат А или Кандидат Б)","winner_why":"3-4 предложения почему именно он — конкретно, про эту роль и контекст, без воды","loser_honest":"1-2 предложения честно про проигравшего — почему он не подходит для этой роли сейчас","zones_compare":[{"name":"Результат","score_a":число,"score_b":число,"edge":"A или B или равно","comment":"в чём принципиальная разница для этой роли"},{"name":"Самостоятельность","score_a":число,"score_b":число,"edge":"A или B или равно","comment":"в чём принципиальная разница"},{"name":"Управление","score_a":число,"score_b":число,"edge":"A или B или равно","comment":"в чём принципиальная разница"},{"name":"Надёжность","score_a":число,"score_b":число,"edge":"A или B или равно","comment":"в чём принципиальная разница"},{"name":"Потолок роста","score_a":число,"score_b":число,"edge":"A или B или равно","comment":"в чём принципиальная разница"}],"winner_risks":["риск победителя 1","риск победителя 2"],"recommended_action":"конкретно что сделать в ближайшие 2 недели после решения","hidden_insight":"парадокс или неочевидное наблюдение по ситуации в целом"}`;
+
+function emptyCandidate(){
+  return {name:'',sf:Array(5).fill(null),ans:Array(15).fill(null)};
+}
+
+let state={
+  mode: null, // 'single' | 'compare'
+  step:0,
+  apiKey: localStorage.getItem('hr_audit_key')||'',
+  role:'', customRole:'', tenure:'', situation:'',
+  current: 0, // 0=кандидат А, 1=кандидат Б
+  candidates: [emptyCandidate(), emptyCandidate()],
+  qIdx:0,
+  resultA: null,
+  resultB: null,
+  resultCmp: null,
+  err: null
 };
 
-// Если ключ уже сохранён — сразу на шаг 1
-if(state.apiKey.trim().length > 20) state.step = 1;
+if(state.apiKey.trim().length>20) state.step=1;
 
-function setState(patch){ Object.assign(state,patch); render(); }
+function setState(patch){Object.assign(state,patch);render();}
 
 function render(){
-  document.getElementById('app').innerHTML = buildHTML();
+  document.getElementById('app').innerHTML=buildHTML();
   attachEvents();
 }
 
 function buildHTML(){
   const s=state;
   if(s.step===0) return renderIntro();
-  if(s.step===1) return renderContext();
-  if(s.step===2) return renderStopFactors();
-  if(s.step===3) return renderQuestions();
-  if(s.step===4) return renderLoading();
-  if(s.step===5&&s.result) return renderResult();
+  if(s.step===1) return renderMode();
+  if(s.step===2) return renderContext();
+  if(s.step===3) return renderCandidateName();
+  if(s.step===4) return renderStopFactors();
+  if(s.step===5) return renderQuestions();
+  if(s.step===6) return renderLoading();
+  if(s.step===7) return s.mode==='compare'? renderCompare() : renderSingleResult();
   return '';
 }
 
@@ -208,26 +230,43 @@ function renderIntro(){
   return `
     <div class="label-sm" style="margin-bottom:8px">оценка управленца</div>
     <h1>Кадровый аудит<br>собственника</h1>
-    <p style="max-width:500px;margin-bottom:28px">15 поведенческих вопросов по 5 зонам — прямой AI-вердикт: повышать, удерживать или выводить.</p>
-    <div class="grid-3">
-      <div class="stat-card"><div class="st">Зоны оценки</div><div class="sv">Результат · Самостоятельность · Управление · Надёжность · Потолок роста</div></div>
-      <div class="stat-card"><div class="st">Стоп-факторы</div><div class="sv">Нарушения доверия, которые блокируют повышение автоматически</div></div>
-      <div class="stat-card"><div class="st">Вердикт</div><div class="sv">Повышать / Удерживать / Выводить — с конкретным обоснованием</div></div>
-    </div>
+    <p style="max-width:500px;margin-bottom:28px">Поведенческий опрос по 5 зонам. Стоп-факторы. Прямой AI-вердикт — один кандидат или сравнение двух.</p>
     <div style="margin-bottom:24px">
       <div class="label-sm" style="margin-bottom:6px">OpenAI API ключ</div>
       <input type="password" id="inp-apikey" value="${state.apiKey}" placeholder="sk-proj-..." style="margin-bottom:6px"/>
-      <div style="font-size:12px;color:var(--muted)">Где взять: <a href="https://platform.openai.com/api-keys" target="_blank" style="color:var(--accent)">platform.openai.com/api-keys</a> — ключ хранится только в вашем браузере</div>
+      <div style="font-size:12px;color:var(--muted)">Ключ: <a href="https://platform.openai.com/api-keys" target="_blank" style="color:var(--accent)">platform.openai.com/api-keys</a> — хранится только в браузере</div>
     </div>
-    <button class="btn-primary" id="btn-start" ${ok?'':'disabled'}>Начать оценку →</button>`;
+    <button class="btn-primary" id="btn-start" ${ok?'':'disabled'}>Начать →</button>`;
+}
+
+function renderMode(){
+  const m=state.mode;
+  return `
+    <div class="label-sm" style="margin-bottom:16px">выберите режим</div>
+    <h2>Что оцениваем?</h2>
+    <div class="grid-2" style="margin-bottom:28px">
+      <div class="mode-card ${m==='single'?'sel':''}" id="mode-single">
+        <h3>Один сотрудник</h3>
+        <p>Оценка текущего сотрудника или одного кандидата. Вердикт: повышать, удерживать или выводить.</p>
+      </div>
+      <div class="mode-card ${m==='compare'?'sel':''}" id="mode-compare">
+        <h3>Сравнение двух</h3>
+        <p>Два кандидата на одну должность. Кого назначить — с прямым обоснованием.</p>
+      </div>
+    </div>
+    <div class="actions">
+      <button class="btn-ghost" id="btn-back-mode">← Назад</button>
+      <button class="btn-primary" id="btn-mode-next" ${m?'':'disabled'}>Далее →</button>
+    </div>`;
 }
 
 function renderContext(){
   const {role,customRole,tenure,situation}=state;
   const ok=(role&&(role!=='Другое'||customRole))&&tenure&&situation;
   return `
-    <div class="label-sm">шаг 1 из 3</div>
-    <h2>О ком идёт речь</h2>
+    <div class="label-sm" style="margin-bottom:4px">шаг 1</div>
+    <h2>Должность и контекст</h2>
+    <p style="margin-bottom:20px">${state.mode==='compare'?'Одна должность для обоих кандидатов.':''}</p>
     <div style="margin-bottom:16px">
       <div class="label-sm" style="margin-bottom:6px">Должность</div>
       <select id="sel-role">
@@ -237,7 +276,7 @@ function renderContext(){
     </div>
     ${role==='Другое'?`<div style="margin-bottom:16px"><input id="inp-custom" value="${customRole}" placeholder="Укажите должность"/></div>`:''}
     <div style="margin-bottom:16px">
-      <div class="label-sm" style="margin-bottom:6px">Стаж в компании</div>
+      <div class="label-sm" style="margin-bottom:6px">Стаж кандидата в компании</div>
       <select id="sel-tenure">
         <option value="">Выберите...</option>
         ${["Менее 1 года","1–2 года","2–4 года","Более 4 лет"].map(t=>`<option value="${t}" ${t===tenure?'selected':''}>${t}</option>`).join('')}
@@ -249,16 +288,38 @@ function renderContext(){
         ${SITUATIONS.map(s=>`<div class="chip ${s===situation?'sel':''}" data-sit="${s}">${s}</div>`).join('')}
       </div>
     </div>
-    <button class="btn-primary" id="btn-to-sf" ${!ok?'disabled':''}>Далее →</button>
-    <div style="margin-top:16px;font-size:12px;color:var(--muted)">Ключ: •••• сохранён · <span style="cursor:pointer;color:var(--accent);text-decoration:underline" id="btn-change-key">сменить</span></div>`;
+    <div class="actions">
+      <button class="btn-ghost" id="btn-back-ctx">← Назад</button>
+      <button class="btn-primary" id="btn-to-name" ${!ok?'disabled':''}>Далее →</button>
+    </div>
+    <div style="margin-top:14px;font-size:12px;color:var(--muted)">Ключ сохранён · <span style="cursor:pointer;color:var(--accent)" id="btn-change-key">сменить</span></div>`;
+}
+
+function renderCandidateName(){
+  const c=state.candidates[state.current];
+  const label=state.mode==='compare'?(state.current===0?'Кандидат А':'Кандидат Б'):'Сотрудник';
+  return `
+    <div class="candidate-badge">${label}</div>
+    <h2>Как зовут?</h2>
+    <p style="margin-bottom:20px">Имя или должность — для читаемости результата.</p>
+    <div style="margin-bottom:24px">
+      <input id="inp-name" value="${c.name}" placeholder="Например: Андрей или Иванов" style="font-size:16px;"/>
+    </div>
+    <div class="actions">
+      <button class="btn-ghost" id="btn-back-name">← Назад</button>
+      <button class="btn-primary" id="btn-to-sf">К стоп-факторам →</button>
+    </div>`;
 }
 
 function renderStopFactors(){
-  const {sf}=state;
+  const c=state.candidates[state.current];
+  const sf=c.sf;
   const ok=sf.every(v=>v!==null);
   const hasBlock=sf.some(v=>v===true);
+  const label=state.mode==='compare'?(state.current===0?'Кандидат А':'Кандидат Б'):'Сотрудник';
+  const name=c.name||label;
   return `
-    <div class="label-sm">шаг 2 из 3</div>
+    <div class="candidate-badge">${name}</div>
     <h2>Критические нарушения доверия</h2>
     <p style="margin-bottom:20px">Один «да» — повышение заблокировано независимо от остальных оценок.</p>
     ${STOP_FACTORS.map((s,i)=>`
@@ -269,69 +330,69 @@ function renderStopFactors(){
           <button class="btn-yes ${sf[i]===true?'sel':''}" data-sf="${i}" data-val="1">Да, было</button>
         </div>
       </div>`).join('')}
-    ${hasBlock?'<div class="warn-banner">Стоп-фактор обнаружен. Вердикт «Повышать» будет заблокирован.</div>':''}
+    ${hasBlock?`<div class="warn-banner">Стоп-фактор обнаружен — повышение ${name} заблокировано.</div>`:''}
     <div class="actions">
-      <button class="btn-secondary" id="btn-back-ctx">← Назад</button>
+      <button class="btn-ghost" id="btn-back-sf">← Назад</button>
       <button class="btn-primary" id="btn-to-q" ${!ok?'disabled':''}>К вопросам →</button>
     </div>`;
 }
 
 function renderQuestions(){
-  const {ans,qIdx,err}=state;
-  const q=QUESTIONS[qIdx];
-  const prog=Math.round((qIdx/QUESTIONS.length)*100);
-  const allDone=ans.every(a=>a!==null);
+  const c=state.candidates[state.current];
+  const q=QUESTIONS[state.qIdx];
+  const prog=Math.round((state.qIdx/QUESTIONS.length)*100);
+  const allDone=c.ans.every(a=>a!==null);
+  const label=state.mode==='compare'?(state.current===0?'Кандидат А':'Кандидат Б'):'Сотрудник';
+  const name=c.name||label;
+  const isLastQ=state.qIdx===QUESTIONS.length-1;
+  const isCompareFirstDone=state.mode==='compare'&&state.current===0;
+  const finishLabel=isCompareFirstDone?'Перейти к кандидату Б →':'Получить вердикт →';
   return `
+    <div class="candidate-badge">${name}</div>
     <div class="progress-wrap">
-      <div class="progress-meta"><span style="text-transform:uppercase;letter-spacing:0.08em;font-size:11px">${q.zone}</span><span>${qIdx+1} / ${QUESTIONS.length}</span></div>
+      <div class="progress-meta"><span style="text-transform:uppercase;letter-spacing:0.08em;font-size:11px">${q.zone}</span><span>${state.qIdx+1} / ${QUESTIONS.length}</span></div>
       <div class="progress-bar"><div class="progress-fill" style="width:${prog}%"></div></div>
     </div>
     <h2 style="font-size:18px;margin-bottom:20px;line-height:1.4">${q.text}</h2>
-    ${q.opts.map((opt,i)=>`<button class="opt-btn ${ans[qIdx]===i?'sel':''}" data-opt="${i}">${opt}</button>`).join('')}
+    ${q.opts.map((opt,i)=>`<button class="opt-btn ${c.ans[state.qIdx]===i?'sel':''}" data-opt="${i}">${opt}</button>`).join('')}
     <div class="actions">
-      <button class="btn-secondary" id="btn-prev-q" ${qIdx===0?'disabled':''}>←</button>
-      ${qIdx<QUESTIONS.length-1
-        ?`<button class="btn-primary" id="btn-next-q" ${ans[qIdx]===null?'disabled':''}>Далее →</button>`
-        :`<button class="btn-primary" id="btn-analyze" ${!allDone?'disabled':''}>Получить вердикт →</button>`}
-      ${err?`<span class="err">${err}</span>`:''}
+      <button class="btn-ghost" id="btn-prev-q" ${state.qIdx===0?'disabled':''}>←</button>
+      ${!isLastQ
+        ?`<button class="btn-primary" id="btn-next-q" ${c.ans[state.qIdx]===null?'disabled':''}>Далее →</button>`
+        :`<button class="btn-primary" id="btn-finish-q" ${!allDone?'disabled':''}>${finishLabel}</button>`}
+      ${state.err?`<span class="err">${state.err}</span>`:''}
     </div>`;
 }
 
 function renderLoading(){
+  const msg=state.mode==='compare'&&state.current===1?'Сравниваю кандидатов...':'Анализирую профиль...';
   return `<div class="loading">
-    <div style="font-size:15px;color:var(--muted)">Анализирую профиль сотрудника...</div>
+    <div style="font-size:15px;color:var(--muted)">${msg}</div>
     <div class="dots"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
   </div>`;
 }
 
-function verdictClass(v){
-  if(v==='ПОВЫШАТЬ') return 'v-good';
-  if(v==='УДЕРЖИВАТЬ') return 'v-warn';
-  return 'v-bad';
-}
-function scoreClass(n){ return n>=70?'score-good':n>=45?'score-mid':'score-bad'; }
-function barClass(n){ return n>=70?'bar-good':n>=45?'bar-mid':'bar-bad'; }
+function vc(v){return v==='ПОВЫШАТЬ'?'v-good':v==='УДЕРЖИВАТЬ'?'v-warn':'v-bad';}
+function sc(n){return n>=70?'score-good':n>=45?'score-mid':'score-bad';}
+function bc(n){return n>=70?'bar-good':n>=45?'bar-mid':'bar-bad';}
 
-function renderResult(){
-  const r=state.result;
-  const vc=verdictClass(r.verdict);
+function renderSingleResult(){
+  const r=state.resultA;
+  const cls=vc(r.verdict);
   return `
     <div class="label-sm" style="margin-bottom:12px">результат</div>
-    <div class="verdict-card ${vc}">
+    <div class="verdict-card ${cls}">
       <div class="label-sm" style="margin-bottom:4px">вердикт</div>
       <div class="verdict-word">${r.verdict}</div>
-      <div class="verdict-headline">${r.headline}</div>
-      ${r.verdict_blocked&&r.blocker_reason?`<div class="blocker-note">Заблокировано стоп-фактором: ${r.blocker_reason}</div>`:''}
-      <div class="verdict-summary">${r.summary}</div>
+      <div class="verdict-headline">${r.headline||''}</div>
+      ${r.verdict_blocked&&r.blocker_reason?`<div class="blocker-note">Заблокировано: ${r.blocker_reason}</div>`:''}
+      <div class="verdict-summary">${r.summary||''}</div>
     </div>
     <div class="label-sm" style="margin-bottom:10px">оценка по зонам</div>
     ${(r.zones||[]).map(z=>`
       <div class="zone-card">
-        <div class="zone-header">
-          <div class="zone-name">${z.name}</div>
-          <div class="zone-score ${scoreClass(z.score)}">${z.score}/100</div>
-        </div>
-        <div class="bar-bg"><div class="bar-fill ${barClass(z.score)}" style="width:${z.score}%"></div></div>
+        <div class="zone-header"><div class="zone-name">${z.name}</div><div class="zone-score ${sc(z.score)}">${z.score}/100</div></div>
+        <div class="bar-bg"><div class="bar-fill ${bc(z.score)}" style="width:${z.score}%"></div></div>
         <div class="zone-text">${z.assessment}</div>
       </div>`).join('')}
     <div class="two-col">
@@ -341,35 +402,111 @@ function renderResult(){
       </div>
       <div class="info-card">
         <div class="label-sm" style="margin-bottom:8px">следующий шаг</div>
-        <div style="font-size:14px;line-height:1.6;color:var(--text)">${r.recommended_action}</div>
+        <div style="font-size:14px;line-height:1.6;color:var(--text)">${r.recommended_action||''}</div>
       </div>
     </div>
     ${r.hidden_insight?`<div class="insight-card"><div class="insight-label">инсайт</div><div class="insight-text">${r.hidden_insight}</div></div>`:''}
-    <button class="btn-secondary" id="btn-reset">Оценить другого сотрудника</button>`;
+    <button class="btn-secondary" id="btn-reset">Новая оценка</button>`;
+}
+
+function renderCompare(){
+  const cmp=state.resultCmp;
+  const ra=state.resultA;
+  const rb=state.resultB;
+  const nameA=state.candidates[0].name||'Кандидат А';
+  const nameB=state.candidates[1].name||'Кандидат Б';
+  const winnerName=cmp.winner==='A'||cmp.winner==='Кандидат А'?nameA:nameB;
+  const loserName=winnerName===nameA?nameB:nameA;
+  const isAWinner=winnerName===nameA;
+
+  const zoneRows=(cmp.zones_compare||[]).map(z=>{
+    const edgeA=z.edge==='A'||z.edge===nameA;
+    const edgeB=z.edge==='B'||z.edge===nameB;
+    return `<tr>
+      <td class="zone-col">${z.name}</td>
+      <td><div class="cmp-bar-wrap"><div class="cmp-bar-bg"><div class="cmp-bar-fill ${bc(z.score_a)}" style="width:${z.score_a}%"></div></div><span class="cmp-score ${edgeA?'cmp-win':edgeB?'cmp-lose':'cmp-tie'}">${z.score_a}</span></div></td>
+      <td><div class="cmp-bar-wrap"><div class="cmp-bar-bg"><div class="cmp-bar-fill ${bc(z.score_b)}" style="width:${z.score_b}%"></div></div><span class="cmp-score ${edgeB?'cmp-win':edgeA?'cmp-lose':'cmp-tie'}">${z.score_b}</span></div></td>
+      <td style="font-size:13px;color:var(--muted)">${z.comment||''}</td>
+    </tr>`;
+  }).join('');
+
+  return `
+    <div class="label-sm" style="margin-bottom:12px">сравнение кандидатов · ${state.role||state.customRole}</div>
+    <div class="cmp-winner">
+      <div class="cmp-winner-label">назначить</div>
+      <div class="cmp-winner-name">${winnerName}</div>
+      <div class="cmp-winner-why">${cmp.winner_why||''}</div>
+    </div>
+    <div class="cmp-cards">
+      <div class="cmp-card ${isAWinner?'winner':''}">
+        <div class="cmp-card-name">${nameA}${isAWinner?' · победитель':''}</div>
+        <div class="cmp-card-verdict">${ra?.verdict||''}</div>
+        <div class="cmp-card-headline">${ra?.headline||''}</div>
+      </div>
+      <div class="cmp-card ${!isAWinner?'winner':''}">
+        <div class="cmp-card-name">${nameB}${!isAWinner?' · победитель':''}</div>
+        <div class="cmp-card-verdict">${rb?.verdict||''}</div>
+        <div class="cmp-card-headline">${rb?.headline||''}</div>
+      </div>
+    </div>
+    <div class="label-sm" style="margin-bottom:10px">сравнение по зонам</div>
+    <table class="cmp-table">
+      <thead><tr><th>Зона</th><th>${nameA}</th><th>${nameB}</th><th>В чём разница</th></tr></thead>
+      <tbody>${zoneRows}</tbody>
+    </table>
+    ${cmp.loser_honest?`<div class="info-card" style="margin-bottom:16px">
+      <div class="label-sm" style="margin-bottom:6px">честно про ${loserName}</div>
+      <div style="font-size:14px;line-height:1.6;color:var(--text)">${cmp.loser_honest}</div>
+    </div>`:''}
+    <div class="two-col">
+      <div class="info-card">
+        <div class="label-sm" style="margin-bottom:8px">риски победителя</div>
+        ${(cmp.winner_risks||[]).map(x=>`<div class="risk-item">${x}</div>`).join('')}
+      </div>
+      <div class="info-card">
+        <div class="label-sm" style="margin-bottom:8px">следующий шаг</div>
+        <div style="font-size:14px;line-height:1.6;color:var(--text)">${cmp.recommended_action||''}</div>
+      </div>
+    </div>
+    ${cmp.hidden_insight?`<div class="hidden-insight-cmp"><div class="insight-label" style="color:var(--accent-text)">инсайт</div><div class="insight-text">${cmp.hidden_insight}</div></div>`:''}
+    <button class="btn-secondary" id="btn-reset">Новая оценка</button>`;
 }
 
 function attachEvents(){
   const s=state;
-  const on=(id,fn)=>{ const el=document.getElementById(id); if(el) el.onclick=fn; };
+  const on=(id,fn)=>{const el=document.getElementById(id);if(el)el.onclick=fn;};
 
-  on('btn-change-key',()=>{
-    localStorage.removeItem('hr_audit_key');
-    setState({apiKey:'', step:0});
-  });
+  const ikey=document.getElementById('inp-apikey');
+  if(ikey) ikey.oninput=e=>{localStorage.setItem('hr_audit_key',e.target.value);setState({apiKey:e.target.value});};
+
   on('btn-start',()=>setState({step:1}));
-
-  const inpApiKey=document.getElementById('inp-apikey');
-  if(inpApiKey) inpApiKey.oninput=e=>{
-    localStorage.setItem('hr_audit_key', e.target.value);
-    setState({apiKey:e.target.value});
-  };
-  on('btn-to-sf',()=>setState({step:2}));
+  on('btn-back-mode',()=>setState({step:0}));
+  on('btn-mode-next',()=>setState({step:2}));
+  on('mode-single',()=>setState({mode:'single'}));
+  on('mode-compare',()=>setState({mode:'compare'}));
   on('btn-back-ctx',()=>setState({step:1}));
-  on('btn-to-q',()=>setState({step:3,qIdx:0}));
+  on('btn-change-key',()=>{localStorage.removeItem('hr_audit_key');setState({apiKey:'',step:0});});
+  on('btn-to-name',()=>setState({step:3,current:0}));
+  on('btn-back-name',()=>setState({step:2}));
+  on('btn-to-sf',()=>{
+    const nm=document.getElementById('inp-name');
+    if(nm){const c=[...s.candidates];c[s.current]={...c[s.current],name:nm.value.trim()};setState({candidates:c,step:4});}
+    else setState({step:4});
+  });
+  on('btn-back-sf',()=>setState({step:3}));
+  on('btn-to-q',()=>setState({step:5,qIdx:0}));
   on('btn-prev-q',()=>setState({qIdx:Math.max(0,s.qIdx-1)}));
   on('btn-next-q',()=>setState({qIdx:s.qIdx+1}));
-  on('btn-analyze',()=>runAnalysis());
-  on('btn-reset',()=>setState({step:0,role:'',customRole:'',tenure:'',situation:'',sf:Array(5).fill(null),ans:Array(15).fill(null),qIdx:0,result:null,err:null}));
+  on('btn-finish-q',()=>{
+    if(s.mode==='compare'&&s.current===0){
+      setState({step:3,current:1});
+    } else {
+      runAnalysis();
+    }
+  });
+  on('btn-reset',()=>{
+    setState({mode:null,step:1,role:'',customRole:'',tenure:'',situation:'',current:0,candidates:[emptyCandidate(),emptyCandidate()],qIdx:0,resultA:null,resultB:null,resultCmp:null,err:null});
+  });
 
   const selRole=document.getElementById('sel-role');
   if(selRole) selRole.onchange=e=>setState({role:e.target.value,customRole:''});
@@ -377,42 +514,64 @@ function attachEvents(){
   if(inpCustom) inpCustom.oninput=e=>setState({customRole:e.target.value});
   const selTenure=document.getElementById('sel-tenure');
   if(selTenure) selTenure.onchange=e=>setState({tenure:e.target.value});
-
   document.querySelectorAll('[data-sit]').forEach(el=>el.onclick=()=>setState({situation:el.dataset.sit}));
-
   document.querySelectorAll('[data-sf]').forEach(el=>el.onclick=()=>{
-    const i=Number(el.dataset.sf), val=el.dataset.val==='1';
-    const nsf=[...s.sf]; nsf[i]=val; setState({sf:nsf});
+    const i=Number(el.dataset.sf),val=el.dataset.val==='1';
+    const c=[...s.candidates];
+    const nsf=[...c[s.current].sf];nsf[i]=val;
+    c[s.current]={...c[s.current],sf:nsf};
+    setState({candidates:c});
   });
-
   document.querySelectorAll('[data-opt]').forEach(el=>el.onclick=()=>{
     const i=Number(el.dataset.opt);
-    const na=[...s.ans]; na[s.qIdx]=i; setState({ans:na});
+    const c=[...s.candidates];
+    const na=[...c[s.current].ans];na[s.qIdx]=i;
+    c[s.current]={...c[s.current],ans:na};
+    setState({candidates:c});
     if(s.qIdx<QUESTIONS.length-1) setTimeout(()=>setState({qIdx:s.qIdx+1}),180);
   });
 }
 
-async function runAnalysis(){
-  setState({step:4,err:null});
+async function callAI(sys,msg){
+  const res=await fetch('https://api.openai.com/v1/chat/completions',{
+    method:'POST',
+    headers:{'Content-Type':'application/json','Authorization':'Bearer '+state.apiKey},
+    body:JSON.stringify({model:'gpt-4o',max_tokens:2000,temperature:0.7,
+      messages:[{role:'system',content:sys},{role:'user',content:msg}]})
+  });
+  const data=await res.json();
+  if(data.error) throw new Error(data.error.message);
+  const txt=data.choices?.[0]?.message?.content||'';
+  return JSON.parse(txt.replace(/```json|```/g,'').trim());
+}
+
+function buildMsg(candidateIdx){
   const s=state;
+  const c=s.candidates[candidateIdx];
   const role=s.role==='Другое'?s.customRole:s.role;
-  const sfText=STOP_FACTORS.map((f,i)=>`${f}: ${s.sf[i]?'ДА':'НЕТ'}`).join('\n');
-  const qText=QUESTIONS.map((q,i)=>`[${q.zone}] ${q.text}\nОтвет: ${s.ans[i]!==null?q.opts[s.ans[i]]:'не отвечено'}`).join('\n\n');
-  const msg=`Должность: ${role}\nСтаж: ${s.tenure}\nСитуация: ${s.situation}\n\nСТОП-ФАКТОРЫ:\n${sfText}\n\nОПРОС:\n${qText}`;
-  try {
-    const res=await fetch('https://api.openai.com/v1/chat/completions',{
-      method:'POST',
-      headers:{'Content-Type':'application/json','Authorization':'Bearer '+s.apiKey},
-      body:JSON.stringify({model:'gpt-4o',max_tokens:1800,temperature:0.7,
-        messages:[{role:'system',content:SYS},{role:'user',content:msg}]})
-    });
-    const data=await res.json();
-    if(data.error) throw new Error(data.error.message);
-    const txt=data.choices?.[0]?.message?.content||'';
-    const parsed=JSON.parse(txt.replace(/```json|```/g,'').trim());
-    setState({result:parsed,step:5});
+  const sfText=STOP_FACTORS.map((f,i)=>`${f}: ${c.sf[i]?'ДА':'НЕТ'}`).join('\n');
+  const qText=QUESTIONS.map((q,i)=>`[${q.zone}] ${q.text}\nОтвет: ${c.ans[i]!==null?q.opts[c.ans[i]]:'не отвечено'}`).join('\n\n');
+  return `Должность: ${role}\nСтаж: ${s.tenure}\nСитуация: ${s.situation}\n\nСТОП-ФАКТОРЫ:\n${sfText}\n\nОПРОС:\n${qText}`;
+}
+
+async function runAnalysis(){
+  setState({step:6,err:null});
+  try{
+    if(state.mode==='single'){
+      const r=await callAI(SYS_SINGLE,buildMsg(0));
+      setState({resultA:r,step:7});
+    } else {
+      const ra=await callAI(SYS_SINGLE,buildMsg(0));
+      const rb=await callAI(SYS_SINGLE,buildMsg(1));
+      const nameA=state.candidates[0].name||'Кандидат А';
+      const nameB=state.candidates[1].name||'Кандидат Б';
+      const role=state.role==='Другое'?state.customRole:state.role;
+      const cmpMsg=`Должность: ${role}\nСитуация: ${state.situation}\n\nКАНДИДАТ А (${nameA}):\n${JSON.stringify(ra)}\n\nКАНДИДАТ Б (${nameB}):\n${JSON.stringify(rb)}\n\nКого назначить на должность ${role}?`;
+      const rcmp=await callAI(SYS_COMPARE,cmpMsg);
+      setState({resultA:ra,resultB:rb,resultCmp:rcmp,step:7});
+    }
   } catch(e){
-    setState({step:3,err:'Ошибка: '+(e.message||'проверьте ключ и интернет')});
+    setState({step:5,err:'Ошибка: '+(e.message||'проверьте ключ и интернет')});
   }
 }
 
